@@ -1,0 +1,44 @@
+# Default configuration for safety-critical control systems
+
+# Environment settings
+environment:
+  grid_size: [10, 10]
+  start_position: [0.0, 0.0]
+  goal_position: [9.0, 9.0]
+  seed: 42
+
+# Safety limits
+safety_limits:
+  safety_radius: 1.0
+  warning_radius: 2.0
+  max_velocity: 2.0
+  max_acceleration: 5.0
+  max_effort: 10.0
+  emergency_stop_distance: 0.5
+
+# Simulation parameters
+simulation:
+  max_steps: 1000
+  dt: 0.1
+  timeout: 60.0
+
+# Controller settings
+controllers:
+  cbf:
+    alpha: 1.0
+    gamma: 0.1
+  
+  mpc:
+    horizon: 10
+    dt: 0.1
+    max_iter: 100
+  
+  emergency_stop:
+    violation_threshold: 3
+    recovery_time: 1.0
+
+# Evaluation settings
+evaluation:
+  goal_tolerance: 0.1
+  safety_threshold: 0.5
+  efficiency_threshold: 0.7
